@@ -4,16 +4,22 @@ import { useState } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
 function AddDog(props) {
 const { user } = useContext(AuthContext);
   const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
   const [userId, setUserId] = useState(user.id);
   const [image, setImage] = useState("");
-  const [ size, setSize ] = useState("");
+  const [size, setSize] = useState("");
+  const [dogFriendly, setDogFriendly] = useState("");
+  const [catFriendly, setCatFriendly] = useState("");
+  const [childFriendly, setChildFriendly] = useState("");
+  const [energy, setEnergy] = useState("");
+
+  const navigate = useNavigate();
 
   const onFormChange = (e) => {
     console.log("file to upload:", e.target.files[0]);
@@ -34,7 +40,7 @@ const { user } = useContext(AuthContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { name, description, userId, image, size};
+    const requestBody = { name, userId, image, size, energy, dogFriendly, catFriendly, childFriendly};
     // Get the token from the localStorage
     const storedToken = localStorage.getItem("authToken");
 
@@ -46,10 +52,16 @@ const { user } = useContext(AuthContext);
       .then((response) => {
         // Reset the state
         setName("");
-        setDescription("");
         setUserId("");
         setImage("");
-        setSize("")
+        setSize("");
+        setDogFriendly("");
+        setCatFriendly("");
+        setChildFriendly("");
+        setEnergy("");
+      })
+      .then(() => {
+        navigate("/dogs");
       })
       .catch((error) => console.log(error));
   };
@@ -77,8 +89,41 @@ const { user } = useContext(AuthContext);
           <option value="Large">Large dog (59-99 pounds)</option>
           <option value="Giant">Giant dog (over 100 pounds)</option>
         </select>
-        <label>Friendly:</label>
-        
+
+        <label>Is Friendly?</label>
+        <select required type="text" name="dogFriendly"
+          value={dogFriendly}
+          onChange={(e) => setDogFriendly(e.target.value)}>
+          <option value="">Is dog friendly?</option>
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
+
+        <select required type="text" name="catFriendly"
+          value={catFriendly}
+          onChange={(e) => setCatFriendly(e.target.value)}>
+          <option value="">Is cat friendly?</option>
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
+
+        <select required type="text" name="dogFriendly"
+          value={childFriendly}
+          onChange={(e) => setChildFriendly(e.target.value)}>
+          <option value="">Is children friendly?</option>
+          <option value="Y">Yes</option>
+          <option value="N">No</option>
+        </select>
+
+
+        <label>Energy:</label>
+        <select required type="text" name="dogEnergy"
+          value={energy}
+          onChange={(e) => setEnergy(e.target.value)}>
+            <option value="">Choose dog's energy</option>
+          <option value="Lazy">Lazy</option>
+          <option value="Energetic">Energetic</option>
+        </select>
         <label>Image:</label>
         <input type="file" name="image" id="file" accept=".jpeg, .png, .jpg" />
 

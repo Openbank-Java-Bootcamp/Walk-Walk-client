@@ -20,7 +20,8 @@ function MyDogs() {
         .get(`${API_URL}/api/mydogs/${user.id}`, {
             headers: { Authorization: `Bearer ${storedToken}` },
           })
-          .then((response) => setDogs(response.data))
+          .then((response) => {console.log(response.data)
+            setDogs(response.data)})
           .catch((error) => console.log(error));
     };
 
