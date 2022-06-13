@@ -10,18 +10,17 @@ const API_URL = "http://localhost:5005";
 function AddActivity(props) {
 const { user } = useContext(AuthContext);
   const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [type, setType] = useState("");
   const [city, setCity] = useState("");
   const [creatorId, setCreatorId] = useState(user.id);
-  const [dogsId, setDogsId] = useState([]);
-  const [dogs, setDogs] = useState([]);
+  const [dogsId , setDogs] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { title, description, city, creatorId, dogsId};
+    const requestBody = {title, type, city, creatorId, dogsId};
     console.log(requestBody);
     console.log(user);
-    // Get the token from the localStorage
+    
     const storedToken = localStorage.getItem("authToken");
 
     // Send the token through the request "Authorization" Headers
@@ -32,33 +31,39 @@ const { user } = useContext(AuthContext);
       .then((response) => {
         // Reset the state
         setTitle("");
-        setDescription("");
+        setType("");
         setCity("");
-        setDogsId("");
+        setDogs([]);
       })
       .catch((error) => console.log(error));
   };
   
 
-  const getUserDogs = () => {
+  const getUserDogsId = () => {
       const storedToken = localStorage.getItem("authToken");
       
       axios
-      .get(`${API_URL}/api/activities`, {
+      .get(`${API_URL}/api/mydogs/${user.id}`, {
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
-          const allDogs = response.data
-          const userDogs = allDogs.filter((dog) => {
+          const userDogs = response.data
+          {/*const userDogs = allDogs.filter((dog) => {
+            console.log(dog)
+            console.log(user.id)
             return dog.userId === user.id
           })
-          setDogs(userDogs)
+        console.log(userDogs)*/}
+        console.log(userDogs);
+          const userDogsId = userDogs.map((dog) => {return dog.id})
+          setDogs(userDogsId)
+          console.log(userDogsId)
         })
         .catch((error) => console.log(error));
   };
 
   useEffect(() => {
-    getUserDogs();
+    getUserDogsId();
   }, []);
 
   return (
@@ -75,13 +80,17 @@ const { user } = useContext(AuthContext);
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label>Description:</label>
-        <textarea
-          type="text"
-          name="description"
-          value={description}
-          onChange={(e) => setDescription(e.target.value)}
-        />
+        <label>Type of activity:</label>
+        <select required type="text" name="type"
+          value={type}
+          onChange={(e) => setType(e.target.value)}>
+            <option value="">Choose type of activity</option>
+            <option value="Quick walk">Quick walk</option>
+            <option value="Long walk">Long walk</option>
+            <option value="Running">Running</option>
+            <option value="Teaching tricks">Teaching tricks</option>
+        </select>
+
         <label>Province:</label>
         <select required type="text" name="city"
         value={city}
@@ -140,12 +149,6 @@ const { user } = useContext(AuthContext);
             <option value="Zamora">Zamora</option>
             <option value="Zaragoza">Zaragoza</option>
         </select>
-
-        <select required type="text" name="city"
-        value={city}
-        onChange={(e) => setCity(e.target.value)}>
-            <option value="">Choose province</option>
-            </select>
 
         <button type="submit">Submit</button>
       </form>

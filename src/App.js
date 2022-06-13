@@ -11,6 +11,7 @@ import ActivitiesList from './pages/ActivitiesListPage';
 import AddActivity from './components/AddActivity';
 import MyDogs from './pages/MyDogs';
 import AddDog from './components/AddDog';
+import EditDogPage from './pages/EditDogPage';
 
 
 function App() {
@@ -70,6 +71,14 @@ function App() {
             element={
               <IsPrivate>
                 <AddDog />
+              </IsPrivate>
+          }
+          />
+          <Route
+            path='/dogs/edit/:dogId'
+            element={
+              <IsPrivate>
+                <EditDogPage />
               </IsPrivate>
           }
           />
