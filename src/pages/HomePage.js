@@ -3,6 +3,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import ActivitiesListPage from "./ActivitiesListPage";
 
 function HomePage() {
     const { isLoggedIn, user, logOutUser } = useContext(AuthContext);
@@ -10,12 +11,8 @@ function HomePage() {
       <div>
         {isLoggedIn && (
         <>
-          <Link to="/account">
-            <button>My Account</button>
-          </Link>
-          <Link to="/activities">
-            <button>Activities</button>
-          </Link>
+            <ActivitiesListPage />
+            <Link to={"/activities/add"}><button>Add new activity</button></Link>
         </>
       )}
 

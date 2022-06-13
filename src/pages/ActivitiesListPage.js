@@ -12,7 +12,7 @@ function ActivitiesListPage() {
 
     const getAllActivities = () => {
         const storedToken = localStorage.getItem("authToken");
-
+        
         axios
         .get(`${API_URL}/api/activities`, {
             headers: { Authorization: `Bearer ${storedToken}` },
