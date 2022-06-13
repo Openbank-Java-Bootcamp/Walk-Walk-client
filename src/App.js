@@ -8,6 +8,9 @@ import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
 import HomePage from './pages/HomePage';
 import ActivitiesList from './pages/ActivitiesListPage';
+import AddActivity from './components/AddActivity';
+import MyDogs from './pages/MyDogs';
+import AddDog from './components/AddDog';
 
 
 function App() {
@@ -44,6 +47,30 @@ function App() {
             <IsPrivate>
               <ActivitiesList />
             </IsPrivate>
+          }
+          />
+          <Route
+            path='/activities/add'
+            element={
+              <IsPrivate>
+                <AddActivity />
+              </IsPrivate>
+          }
+          />
+          <Route
+            path='/dogs'
+            element={
+              <IsPrivate>
+                <MyDogs />
+              </IsPrivate>
+          }
+          />
+          <Route
+            path='/dogs/add'
+            element={
+              <IsPrivate>
+                <AddDog />
+              </IsPrivate>
           }
           />
 

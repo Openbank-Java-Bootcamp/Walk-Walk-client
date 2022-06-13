@@ -13,9 +13,12 @@ function Navbar() {
 
       {isLoggedIn && (
         <>
-          <button onClick={user.dogs}>My Dogs</button>
+          <button onClick={user}>My Account</button>
           <button onClick={logOutUser}>Logout</button>
-          <span>{user && user.name}</span>
+          <Link to="/dogs">
+            <button>My dogs</button>
+          </Link>
+          <span>{user && user.name.toUpperCase()}</span>
         </>
       )}
 
