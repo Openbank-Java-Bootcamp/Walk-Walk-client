@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import { useNavigate } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
@@ -14,6 +15,8 @@ const { user } = useContext(AuthContext);
   const [city, setCity] = useState("");
   const [creatorId, setCreatorId] = useState(user.id);
   const [dogsId , setDogs] = useState([]);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -33,7 +36,7 @@ const { user } = useContext(AuthContext);
         setTitle("");
         setType("");
         setCity("");
-        setDogs([]);
+        navigate("/myactivities");
       })
       .catch((error) => console.log(error));
   };
@@ -47,17 +50,12 @@ const { user } = useContext(AuthContext);
           headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
-          const userDogs = response.data
-          {/*const userDogs = allDogs.filter((dog) => {
-            console.log(dog)
-            console.log(user.id)
-            return dog.userId === user.id
-          })
-        console.log(userDogs)*/}
-        console.log(userDogs);
+          const userDogs = response.data;
+          
+        
           const userDogsId = userDogs.map((dog) => {return dog.id})
           setDogs(userDogsId)
-          console.log(userDogsId)
+          
         })
         .catch((error) => console.log(error));
   };
@@ -70,9 +68,8 @@ const { user } = useContext(AuthContext);
     <div className="AddActivity">
       <h3>Add Activity</h3>
 
-      <form onSubmit={handleSubmit}>
-        {" "}
-        {/*  <== UPDATE   */}
+      <form onSubmit={(dogsId.length > 0 ? handleSubmit : console.log("You need to have a dog to create an activity."))}>
+        
         <label>Title:</label>
         <input
           type="text"

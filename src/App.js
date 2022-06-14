@@ -9,9 +9,11 @@ import IsAnon from "./components/IsAnon";
 import HomePage from './pages/HomePage';
 import ActivitiesList from './pages/ActivitiesListPage';
 import AddActivity from './components/AddActivity';
-import MyDogs from './pages/MyDogs';
 import AddDog from './components/AddDog';
 import EditDogPage from './pages/EditDogPage';
+import EditActivityPage from './pages/EditActivityPage';
+import MyDogsPage from './pages/MyDogsPage';
+import MyActivitiesPage from './pages/MyActivitiesPage';
 
 
 function App() {
@@ -62,7 +64,7 @@ function App() {
             path='/dogs'
             element={
               <IsPrivate>
-                <MyDogs />
+                <MyDogsPage />
               </IsPrivate>
           }
           />
@@ -79,6 +81,24 @@ function App() {
             element={
               <IsPrivate>
                 <EditDogPage />
+              </IsPrivate>
+          }
+          />
+
+          <Route
+            path='/activity/edit/:activityId'
+            element={
+              <IsPrivate>
+                <EditActivityPage />
+              </IsPrivate>
+          }
+          />
+
+          <Route
+            path='/myactivities'
+            element={
+              <IsPrivate>
+                <MyActivitiesPage />
               </IsPrivate>
           }
           />

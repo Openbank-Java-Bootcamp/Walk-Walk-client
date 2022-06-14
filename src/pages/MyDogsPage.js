@@ -1,4 +1,4 @@
-// src/pages/MyDogs.js
+// src/pages/MyDogsPage.js
 
 import { useState, useEffect } from "react";
 import { AuthContext } from "../context/auth.context";
@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 const API_URL = "http://localhost:5005";
 
-function MyDogs() {
+function MyDogsPage() {
     const [ dogs, setDogs ] = useState([]);
     const { user } = useContext(AuthContext);
     const getAllDogs = () => {
@@ -39,4 +39,4 @@ function MyDogs() {
     );
 }
 
-export default MyDogs;
+export default MyDogsPage;

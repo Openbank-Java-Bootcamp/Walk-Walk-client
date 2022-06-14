@@ -4,11 +4,15 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import ActivityCard from "../components/ActivityCard";
+import { AuthContext } from "../context/auth.context";
+import { useContext } from "react";
+import MyActivityCard from "../components/MyActivityCard";
 
 const API_URL = "http://localhost:5005";
 
 function ActivitiesListPage() {
     const [activities, setActivities] = useState([]);
+    const { user } = useContext(AuthContext);
 
     const getAllActivities = () => {
         const storedToken = localStorage.getItem("authToken");
@@ -28,7 +32,8 @@ function ActivitiesListPage() {
             <div className="ActivitiesList">
                 <h1>Activities</h1>
                 {activities.map((activity) => (
-                    <ActivityCard key ={activity.id} {...activity} />
+                    (activity.creator.id != user.id ? <ActivityCard key ={activity.id} {...activity} /> : <MyActivityCard key ={activity.id} user={user} {...activity} /> )
+                    
                 ))}
                 
             </div>
