@@ -9,57 +9,54 @@ import { useContext } from "react";
 const API_URL = "http://localhost:5005";
 
 function EditActivityPage(props) {
-    const [ title, setTitle ] = useState("");
-    const [ type, setType ] = useState("");
-    const [ city, setCity ] = useState("");
-    const [ creatorId, setCreator ] = useState("");
-    const [ dogsId, setDogsId ] = useState([]);
-    const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
+  const [title, setTitle ] = useState("");
+  const [type, setType] = useState("");
+  const [city, setCity] = useState("");
+  const [creatorId, setCreatorId ] = useState("");
 
 
-    const { activityId } = useParams();
+  const {activityId} = useParams();
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        const storedToken = localStorage.getItem("authToken");
-        const requestOne = axios.get(`${API_URL}/api/activities/${activityId}`, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        })
-        const requestTwo = axios.get(`${API_URL}/api/mydogs/${user.id}`, {
-          headers: { Authorization: `Bearer ${storedToken}` },
-        })
-        axios.all([requestOne, requestTwo]).then(axios.spread((...responses) => {
-          const oneActivity = responses[0].data;
-          setTitle(oneActivity.title);
-          setType(oneActivity.type);
-          setCity(oneActivity.city);
-          setCreator(oneActivity.creator.id);
+  useEffect(() => {
+    const storedToken = localStorage.getItem("authToken");
 
-          const myDogs = responses[1].data;
-          const myDogsID = myDogs.map((dog)=> {return dog.id})
-          setDogsId(myDogsID)
-        })).catch(errors => {
-          console.log(errors)
-        })}, [activityId]);
+    axios
+    .get(`${API_URL}/api/activities/${activityId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+    })
+    .then((response) => {
 
-
-        const handleFormSubmit = (e) => {
-            e.preventDefault();
-            const storedToken = localStorage.getItem("authToken");
-            
-            const requestBody = { title, type, city, creatorId, dogsId};
+      const oneActivity = response.data;
+      console.log(oneActivity);
+      setTitle(oneActivity.title);
+      setType(oneActivity.type);
+      setCity(oneActivity.city);
+      setCreatorId(oneActivity.creator.id);
         
-            
-            axios
-            .put(`${API_URL}/api/activities/${activityId}`, requestBody, {
-                headers: { Authorization: `Bearer ${storedToken}` },
-            })
-            .then((response) => {
-                
-                navigate("/");
-            });
-        };
+})
+.catch((error) => console.log(error));
+
+}, [activityId]);
+
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const storedToken = localStorage.getItem("authToken");
+    
+    const requestBody = { title, type, city, creatorId };
+console.log(requestBody);
+      axios
+      .put(`${API_URL}/api/activities/${activityId}`, requestBody, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+    })
+    .then((response) => {
+    navigate("/myactivities");
+    });
+};
         
         const deleteActivity = () => {
             const storedToken = localStorage.getItem("authToken");
