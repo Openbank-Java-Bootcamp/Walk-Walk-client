@@ -35,7 +35,7 @@ function EditActivityPage(props) {
       setTitle(oneActivity.title);
       setType(oneActivity.type);
       setCity(oneActivity.city);
-      setCreatorId(oneActivity.creator.id);
+      setCreatorId(user.id);
         
 })
 .catch((error) => console.log(error));

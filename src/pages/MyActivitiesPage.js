@@ -55,7 +55,8 @@ function MyActivitiesPage() {
                           }}>
                             <h3>{activity.title}</h3>
                             <p style={{ maxWidth: "400px" }}>{activity.type}</p>
-                            <p style={{ maxWidth: "400px" }}>Activity created by: {activity.creator.name}</p>
+                            <p style={{ maxWidth: "400px" }}>Activity created by: {activity.creator.username}</p>
+                            <p>Movil phone: {activity.creator.number}</p>
                             <p>Activity choosen</p>
                         </div>
                     ))}

@@ -14,13 +14,14 @@ const { user } = useContext(AuthContext);
   const [type, setType] = useState("");
   const [city, setCity] = useState("");
   const [creatorId, setCreatorId] = useState(user.id);
+  const [assignedId, setAssignedId] = useState(null)
   const [dogsId , setDogs] = useState([]);
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = {title, type, city, creatorId, dogsId};
+    const requestBody = {title, type, city, creatorId, assignedId, dogsId};
     console.log(requestBody);
     console.log(user);
     

@@ -16,6 +16,7 @@ import MyDogsPage from './pages/MyDogsPage';
 import MyActivitiesPage from './pages/MyActivitiesPage';
 
 
+
 function App() {
   return (
     <div className="App">
