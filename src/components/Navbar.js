@@ -13,7 +13,7 @@ function Navbar() {
 
       {isLoggedIn && (
         <>
-        <span>{user && user.name.toUpperCase()}</span>
+        <span>{user && user.username.toUpperCase()}</span>
           <Link to="/dogs">
             <button>My dogs</button>
           </Link>

@@ -21,9 +21,14 @@ function ActivitiesListPage() {
         .get(`${API_URL}/api/activities`, {
             headers: { Authorization: `Bearer ${storedToken}` },
           })
-          .then((response) => setActivities(response.data))
+          .then((response) => {
+            setActivities(response.data)
+        console.log(response.data)})
+        
           .catch((error) => console.log(error));
     };
+
+    
 
     useEffect(() => {
         getAllActivities();
@@ -32,7 +37,8 @@ function ActivitiesListPage() {
             <div className="ActivitiesList">
                 <h1>Activities</h1>
                 {activities.map((activity) => (
-                    (activity.creator.id != user.id ? <ActivityCard key ={activity.id} {...activity} /> : <MyActivityCard key ={activity.id} user={user} {...activity} /> )
+                    
+                    (!activity.chosen ? (activity.creator.id != user.id ? <ActivityCard key ={activity.id} {...activity} /> : <MyActivityCard key ={activity.id} {...activity} /> ) : null)
                     
                 ))}
                 
