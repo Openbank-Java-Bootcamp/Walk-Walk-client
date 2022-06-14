@@ -11,31 +11,24 @@ import { useNavigate, useParams } from "react-router-dom";
 const API_URL = "http://localhost:5005";
 
 
-function ActivityCard({ title, type, city, creator, dogs, id }) {
+function ActivityCard(props) {
     const { user } = useContext(AuthContext);
-    const [ title1 , setTitle ] = useState("");
-    const [ type1 , setType] = useState("");
-    const [ city1 , setCity ] = useState("");
-    const [ creatorId1 , setCreatorId ] = useState("");
-    const [ assignedId, setAssignedId] = useState("");
-    const [ dogsId, setDogsId] = useState("");
+    const [ title, setTitle ] = useState(props.title);
+    const [ type, setType] = useState(props.type);
+    const [ city , setCity ] = useState(props.city);
+    const [ creatorId , setCreatorId ] = useState(props.creator.id);
+    const [ assignedId, setAssignedId] = useState(user.id);
     const navigate = useNavigate();
     
     const handleClick = (e) => {
         e.preventDefault();
         const storedToken = localStorage.getItem("authToken");
-        setTitle(title);
-        setType(type);
-        setCity(city);
-        setCreatorId(creator.id);
-        setAssignedId(user.id);
-        setDogsId(dogs)
         
 
-        const requestBody = { title1, type1, city1, creatorId1, assignedId, dogsId};
+        const requestBody = { title, type, city, creatorId, assignedId };
         console.log(requestBody)
         axios
-        .put(`${API_URL}/api/activities/${id}`, requestBody,  {
+        .put(`${API_URL}/api/activities/${props.id}`, requestBody,  {
             headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
@@ -49,9 +42,9 @@ function ActivityCard({ title, type, city, creator, dogs, id }) {
         style={{
             backgroundColor: 'pink',
           }}>
-            <h3>{title}</h3>
-            <p style={{ maxWidth: "400px" }}>{type}</p>
-            <p style={{ maxWidth: "400px" }}>Activity created by: {creator.name}</p>
+            <h3>{props.title}</h3>
+            <p style={{ maxWidth: "400px" }}>{props.type}</p>
+            <p style={{ maxWidth: "400px" }}>Activity created by: {props.creator.name}</p>
             <button onClick={handleClick}>Choose activity</button>
             
         </div>
