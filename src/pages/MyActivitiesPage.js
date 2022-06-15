@@ -9,6 +9,8 @@ import { Link } from "react-router-dom";
 import ActivityCard from "../components/ActivityCard";
 import MyActivityCard from "../components/MyActivityCard";
 import { useNavigate, useParams } from "react-router-dom";
+import StartRating from "../components/StarRating";
+import Navbar from '../components/Navbar';
 
 
 const API_URL = "http://localhost:5005";
@@ -38,15 +40,17 @@ function MyActivitiesPage() {
           console.log(errors)
         })}, []);
     return (
+        <div>
+          <Navbar />
             <div className="MyActivitiesList">
                 <div className="ActivitiesCreated">
                     <h1>Activities created:</h1>
                     {createdActivities.map((activity) => (
                         <MyActivityCard key ={activity.id} user={user} {...activity} />
                     ))}
-                    <Link to={"/activities/add"}><button>Add new activity</button></Link>
+                    <Link to={"/activities/add"}><button id="btn">Add new activity</button></Link>
                 </div>
-                <div className="ActivitiesAssigned">
+                <div className="ActivitiesCreated">
                     <h1>Activities chosen:</h1>
                     {chosenActivities.map((activity) => (
                         <div className="ActivityCard card"
@@ -58,10 +62,12 @@ function MyActivitiesPage() {
                             <p style={{ maxWidth: "400px" }}>Activity created by: {activity.creator.username}</p>
                             <p>Movil phone: {activity.creator.number}</p>
                             <p>Activity choosen</p>
+                            <StartRating />
                         </div>
                     ))}
                 </div>
             </div>
+        </div>
     );
 }
 

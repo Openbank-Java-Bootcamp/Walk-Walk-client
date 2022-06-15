@@ -1,97 +1,37 @@
+@import "https://fonts.googleapis.com/css?family=Raleway";
 
 
 
-
-button,
-select {
-  background-color: rgb(211, 207, 207);
-  padding: 5px 10px;
-  min-width: 50px;
-  margin: 5px;
-  font-size: 18px;
-}
-
-label {
-  width: 200px;
-  display: block;
-}
-
-input,
+/*input,
 textarea {
   width: 200px;
   padding: 10px;
   display: inline-block;
   margin: 10px;
+}*/
+body{
+  font-family: Raleway;
+  margin:0px;
 }
-
-nav {
-  background: yellowgreen;
-  color: white;
-  padding: 0px 20px;
-  box-shadow: 0px 1px 2px gray;
-  width: 100%;
-  margin-bottom: 15px;
-  padding: 5px;
-}
-
-
 
 .card {
-  width: 400px;
+  max-width: 400px;
   padding: 10px;
   box-shadow: 0px 2px 3px grey;
   margin: 0 auto;
   margin-bottom: 20px;
-  background: rgb(241, 241, 194);
+  background: #00bcd4;
   border-radius: 20px;
+  
 }
-
-
-.EditActivityPage,
-.AddActivity,
-.AddDog,
-.SignupPage,
-.LoginPage {
-  background: #7ab38f;
-  border: 1px solid grey;
-  box-shadow: 0px 2px 3px grey;
-  width: 400px;
-  text-align: center;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  padding: 10px;
-  border-radius: 20px;
-}
-
-.EditActivityPage {
-  background-color: pink;
-}
-
-.SignupPage,
-.LoginPage {
-  background-color: yellowgreen;
-}
-
 
 .EditActivityPage form,
-.EditDogPage form,
-.AddDog form,
-.AddActivity form,
-.SignupPage form,
-.LoginPage form {
+.EditDogPage form {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.AddAvticity button,
-.AddDog button {
-  display: block;
-}
-
-.ActivityCard {
-  background-color: #dfeef9;
-}
 
 .MyActivitiesList {
   display: -ms-flex;
@@ -105,4 +45,269 @@ nav {
   padding: 4px;
   margin-right: 20px;
   margin-left: -10px;
+}
+
+.Welcome {
+  height: 500px;
+  min-height: 100vh;
+  background-image: url("./images/image13.jpg"); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+label {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.input {
+  padding: 5px 15px 5px 5px;
+}
+
+#btn {
+  align-self: center;
+  padding: 7px 30px;
+  margin-top: 20px;
+  border: none;
+  color: #fff;
+  background-color: rgb(255, 39, 147);
+  box-shadow: 2px 2px 2px rgb(204, 4, 121);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in;
+  max-width: 250px;
+  min-width: 250px;
+}
+#btn:hover {
+  background-color: rgb(204, 4, 121);
+  box-shadow: none;
+  transform: translateX(1px) translateY(1px);
+}
+#btn2 {
+  align-self: center;
+  padding: 7px 30px;
+  margin-top: 30px;
+  border: none;
+  color: #fff;
+  background-color: #799fb7;
+  box-shadow: 2px 2px 2px #2a7595;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in;
+  
+}
+
+#btn2:hover {
+  background-color: #0d3d47;
+  box-shadow: none;
+  transform: translateX(1px) translateY(1px);
+}
+
+
+.signup-label {
+  position: relative;
+  bottom: -10px;
+  color: rgb(11, 11, 11);
+  font-size: 14px;
+}
+
+.link {
+  text-decoration: none;
+  color: rgb(204, 4, 121);
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.form {
+  padding: 40px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+
+
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  font-size: 16px;
+  max-width: 250px;
+
+}
+
+.logobig {
+  margin-top: -20px;
+  height: 140px;
+  padding-bottom: 20px;
+}
+
+
+
+
+div.container {
+  font-family: Raleway;
+  display: flex;
+  align-items:center;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 5px 5px;
+  text-align: center;
+  height: 105px;
+}
+div.container a {
+  color: #fff;
+  text-decoration: none;
+  font: 20px Raleway;
+  margin: 0px 10px;
+  padding: 5px 5px;
+  position: relative;
+  z-index: 0;
+  cursor: pointer;
+}
+
+div.container span {
+  color: #fff;
+  text-decoration: none;
+  font: 20px Raleway;
+  margin: 0px 10px;
+  padding: 10px 10px;
+  position: relative;
+  z-index: 0;
+}
+
+.cyan {
+  background: #00bcd4;
+}
+
+div.brackets .links:before,
+div.brackets .links:after {
+  position: absolute;
+  opacity: 0;
+  font-size: 35px;
+  top: 0px;
+  transition: all 0.3s;
+}
+
+div.brackets .links:before {
+  content: "(";
+  left: -10px;
+  transform: translateX(10px);
+}
+
+div.brackets .links:after {
+  content: ")";
+  right: -10px;
+  transform: translateX(-10px);
+}
+
+div.brackets .links:hover:before,
+div.brackets .links:hover:after {
+  opacity: 1;
+  transform: translateX(0px);
+}
+
+.logoutButton {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+.logoutButton img{
+  height: 25px;
+}
+
+.logosmall {
+  height: 100px;
+
+}
+.logo{
+  padding: 0px;
+  margin: 0px;
+}
+.logo a:before {
+  content: none;
+}
+
+.Add, .Edit {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.Add #btn {
+  align-self: center;
+  padding: 7px 30px;
+  margin-top: 5px;
+}
+.Add .input-container {
+  margin-bottom: 15px;
+}
+
+.Page {
+  background-color:azure;
+  padding-bottom: 20px;
+}
+
+#myactivity_card{
+  box-shadow: 4px 4px 4px #1a512e;
+}
+
+.MyActivitiesList{
+  background-color:azure;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ActivitiesCreated{
+  padding-bottom: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.MyDogsList{
+  background-color:azure;
+  padding-bottom: 20px;
+  padding-top: 20px;
+
+}
+.MyDogsList h1{
+  margin-top: 0px;
+}
+.dogImage{
+  max-height:150px;
+  max-width:150px;
+  margin-bottom: 0px;
+
+}
+#dogCard{
+  display: flex;
+  justify-content: space-between;
+  background-color: #c6dc93;
+}
+.rightDog{
+  margin-right: 20px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.leftDog{
+  width:300px
 }

@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
+import logosmall from "../images/dog_logo_beige_small.png";
 
 const API_URL = "http://localhost:5005";
 
@@ -41,28 +42,45 @@ function LoginPage(props) {
   };
 
   return (
-    <div className="LoginPage">
-      <h1>Login</h1>
+    <div className="Welcome">
+      <form className="form" onSubmit={handleLoginSubmit}>
+        <div className="input-container">
+        <img className="logobig" src={logosmall} alt="logosmall" />
+          <label>Email:</label>
+          <input 
+          type="email" 
+          name="email" 
+          className="input" 
+          value={email} 
+          onChange={handleEmail} 
+          />
+        </div>
+        <div className="input-container">
+          <label>Password:</label>
+          <input
+            type="password"
+            name="password"
+            className="input"
+            value={password}
+            onChange={handlePassword}
+          />
+        </div>
+          <button type="submit" id="btn">
+            Login
+          </button>
 
-      <form onSubmit={handleLoginSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
+          <p className="signup-label">
+          Don't have an account?{" "}
+          <Link className="link" to={"/signup"}>Sign Up</Link>
+        </p>
+        </form>
+        
 
-        <button type="submit">Login</button>
-      </form>
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Don't have an account yet?</p>
-      <Link to={"/signup"}> Sign Up</Link>
+        
     </div>
+      
   );
 }
 

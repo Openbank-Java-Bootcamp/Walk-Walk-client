@@ -44,7 +44,7 @@ function ActivityCard(props) {
             <h3>{props.title}</h3>
             <p style={{ maxWidth: "400px" }}>{props.type}</p>
             <p style={{ maxWidth: "400px" }}>Activity created by: {props.creator.username}</p>
-            <button onClick={handleClick}>Choose activity</button>
+            <button id="btn2" onClick={handleClick}>Choose activity</button>
             
         </div>
     );

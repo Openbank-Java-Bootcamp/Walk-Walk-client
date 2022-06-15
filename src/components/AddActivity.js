@@ -5,6 +5,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const API_URL = "http://localhost:5005";
 
@@ -66,21 +67,27 @@ const { user } = useContext(AuthContext);
   }, []);
 
   return (
-    <div className="AddActivity">
-      <h3>Add Activity</h3>
-
-      <form onSubmit={(dogsId.length > 0 ? handleSubmit : console.log("You need to have a dog to create an activity."))}>
+    <div>
+      <Navbar />
         
+      <div className="Add">
+      <form className="form" onSubmit={(dogsId.length > 0 ? handleSubmit : console.log("You need to have a dog to create an activity."))}>
+      <h3>Add Activity</h3>
+      <div className="input-container">
         <label>Title:</label>
         <input
           type="text"
           name="title"
+          className="input" 
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
+        </div>
+        <div className="input-container">
         <label>Type of activity:</label>
-        <select required type="text" name="type"
+        <select  id="btn" required type="text" name="type"
           value={type}
+          className="input" 
           onChange={(e) => setType(e.target.value)}>
             <option value="">Choose type of activity</option>
             <option value="Quick walk">Quick walk</option>
@@ -88,10 +95,12 @@ const { user } = useContext(AuthContext);
             <option value="Running">Running</option>
             <option value="Teaching tricks">Teaching tricks</option>
         </select>
-
+        </div>
+        <div className="input-container">
         <label>Province:</label>
-        <select required type="text" name="city"
+        <select  id="btn" required type="text" name="city"
         value={city}
+        className="input" 
         onChange={(e) => setCity(e.target.value)}>
             <option value="">Choose province</option>
             <option value="Álava/Araba">Álava/Araba</option>
@@ -147,10 +156,14 @@ const { user } = useContext(AuthContext);
             <option value="Zamora">Zamora</option>
             <option value="Zaragoza">Zaragoza</option>
         </select>
-
-        <button type="submit">Submit</button>
+        </div>
+        <div className="input-container">
+        <button id="btn2" type="submit">Submit</button>
+        </div>
       </form>
     </div>
+    </div>
+    
   );
 }
 

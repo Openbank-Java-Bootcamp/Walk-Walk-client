@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import logosmall from "../images/dog_logo_beige_small.png";
 
 const API_URL = "http://localhost:5005";
 
@@ -37,34 +38,67 @@ function SignupPage(props) {
   };
 
   return (
-    <div className="SignupPage">
-      <h1>Sign Up</h1>
+    <div className="Welcome">
+      <form className="form" onSubmit={handleSignupSubmit}>
+      <div className="input-container">
 
-      <form onSubmit={handleSignupSubmit}>
-        <label>Email:</label>
-        <input type="email" name="email" value={email} onChange={handleEmail} />
+     
 
-        <label>Password:</label>
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={handlePassword}
-        />
-
+      <img className="logobig" src={logosmall} alt="logosmall" />
         <label>Username:</label>
-        <input type="text" name="username" value={username} onChange={handleUsername} />
-
+        <input 
+          className="input" 
+          type="text" 
+          name="username" 
+          value={username} 
+          onChange={handleUsername}
+        />
+      </div>
+      <div className="input-container">
+          <label>Email:</label>
+          <input
+            className="input" 
+            type="email" 
+            name="email" 
+            value={email} 
+            onChange={handleEmail} 
+          />
+        </div>
+        <div className="input-container">
+          <label>Password:</label>
+          <input
+            className="input" 
+            type="password"
+            name="password"
+            value={password}
+            onChange={handlePassword}
+          />
+        </div>
+        
+      <div className="input-container">
         <label>Phone number:</label>
-        <input type="text" name="number" value={number} onChange={handleNumber} />
+        <input 
+          className="input" 
+          type="text" 
+          name="number" 
+          value={number} 
+          onChange={handleNumber} 
+        />
+      </div>
 
-        <button type="submit">Sign Up</button>
+        <button type="submit" id="btn">
+          Sign Up
+          </button>
+
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+
+        <p className="signup-label">
+          Already have account?{" "}
+        <Link className="link" to={"/login"}>Login</Link>
+        </p>
       </form>
 
-      {errorMessage && <p className="error-message">{errorMessage}</p>}
-
-      <p>Already have account?</p>
-      <Link to={"/login"}> Login</Link>
+      
     </div>
   );
 }

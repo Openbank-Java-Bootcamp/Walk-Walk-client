@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
+import Navbar from "../components/Navbar";
 
 const API_URL = "http://localhost:5005";
 
@@ -92,71 +93,89 @@ function EditDogPage(props) {
     };
 
     return (
-        <div className="EditDogPage">
+        <div>
+            <Navbar />
+        
+        <div className="Edit">
             <h3>Edit the Dog</h3>
-            <form onSubmit={handleFormSubmit} onChange={(e) => onFormChange(e)}>
+            <form className="form" onSubmit={handleFormSubmit} onChange={(e) => onFormChange(e)}>
+            <div className="input-container">
             <label>Name:</label>
             <input
+                className="input" 
                 type="text"
                 name="name"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
             />
-
+            </div>
+            <div className="input-container">
             <label>Size:</label>
-            <select required type="text" name="dogSize"
+            <select id="btn" required type="text" name="dogSize"
                 value={size}
+                className="input" 
                 onChange={(e) => setSize(e.target.value)}>
                 <option value="">Choose size</option>
-                <option value="Toy">Toy dog (5-12 pounds)</option>
-                <option value="Small">Small dog (12-24 pounds)</option>
-                <option value="Medium">Medium dog (24-59 pounds)</option>
-                <option value="Large">Large dog (59-99 pounds)</option>
-                <option value="Giant">Giant dog (over 100 pounds)</option>
+                <option value="Toy">Toy dog (5-12 lbs)</option>
+                <option value="Small">Small dog (12-24 lbs)</option>
+                <option value="Medium">Medium dog (24-59 lbs)</option>
+                <option value="Large">Large dog (59-99 lbs)</option>
+                <option value="Giant">Giant dog (over 100 lbs)</option>
             </select>
-
+            </div>
+            <div className="input-container">
             <label>Is Friendly?</label>
-            <select required type="text" name="dogFriendly"
+            <select id="btn" required type="text" name="dogFriendly"
                 value={dogFriendly}
+                className="input" 
                 onChange={(e) => setDogFriendly(e.target.value)}>
                 <option value="">Is dog friendly?</option>
                 <option value="Y">Yes</option>
                 <option value="N">No</option>
             </select>
-
-            <select required type="text" name="catFriendly"
+            </div>
+            <div className="input-container">
+            <select id="btn" required type="text" name="catFriendly"
                 value={catFriendly}
+                className="input" 
                 onChange={(e) => setCatFriendly(e.target.value)}>
                 <option value="">Is cat friendly?</option>
                 <option value="Y">Yes</option>
                 <option value="N">No</option>
             </select>
-
-            <select required type="text" name="dogFriendly"
+            </div>
+            <div className="input-container">
+            <select id="btn" required type="text" name="dogFriendly"
                 value={childFriendly}
+                className="input" 
                 onChange={(e) => setChildFriendly(e.target.value)}>
                 <option value="">Is children friendly?</option>
                 <option value="Y">Yes</option>
                 <option value="N">No</option>
             </select>
-
-
+            </div>
+            <div className="input-container">
             <label>Energy:</label>
-                <select required type="text" name="dogEnergy"
+                <select id="btn" required type="text" name="dogEnergy"
                     value={energy}
+                    className="input" 
                     onChange={(e) => setEnergy(e.target.value)}>
                     <option value="">Choose dog's energy</option>
                     <option value="Lazy">Lazy</option>
                     <option value="Energetic">Energetic</option>
                 </select>
-
-
+            </div>
+            <div className="input-container">
             <label>Image:</label>
-            <input type="file" name="image" id="file" accept=".jpeg, .png, .jpg" />
-                <button type="submit">Update Dog</button>
-
+            <input className="input"  type="file" name="image" id="file" accept=".jpeg, .png, .jpg" />
+                <div className="buttons">
+                <button id="btn2" type="submit">Update Dog</button>
+                <button id="btn2" onClick={deleteDog}>Delete Dog</button>
+                </div>
+            </div>
             </form>
-            <button onClick={deleteDog}>Delete Dog</button>
+            
+        </div>
         </div>
     )
 
