@@ -7,6 +7,7 @@ import ActivityCard from "../components/ActivityCard";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
 import MyActivityCard from "../components/MyActivityCard";
+import Navbar from "../components/Navbar";
 
 const API_URL = "http://localhost:5005";
 
@@ -34,7 +35,8 @@ function ActivitiesListPage() {
         getAllActivities();
     }, []);
     return (
-            <div className="ActivitiesList">
+            <div className="Page">
+                
                 <h1>Activities</h1>
                 {activities.map((activity) => (
                     

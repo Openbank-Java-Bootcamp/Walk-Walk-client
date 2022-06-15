@@ -1,6 +1,5 @@
-import logo from './logo.svg';
 import './App.css';
-import Navbar from './components/Navbar';
+
 import { Routes, Route } from 'react-router-dom';
 import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
@@ -14,14 +13,16 @@ import EditDogPage from './pages/EditDogPage';
 import EditActivityPage from './pages/EditActivityPage';
 import MyDogsPage from './pages/MyDogsPage';
 import MyActivitiesPage from './pages/MyActivitiesPage';
+import StartRating from './components/StarRating';
 
 
 
 function App() {
   return (
     <div className="App">
-      <Navbar />
 
+      {/*<Navbar />*/}
+      
       <Routes>
       <Route
           path="/signup"

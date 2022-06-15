@@ -5,6 +5,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 import { useContext } from "react";
+import Navbar from "../components/Navbar";
 
 const API_URL = "http://localhost:5005";
 
@@ -70,21 +71,28 @@ console.log(requestBody);
             .catch((err) => console.log(err));
         };
         return (
-            <div className="EditActivityPage">
-              <h3>Edit the Activity</h3>
-        
-              <form onSubmit={handleFormSubmit}>
+          <div>
+            <Navbar />
+            <h3>Edit the Activity</h3>
+          
+            <div className="Edit">
+
+              <form className="form" onSubmit={handleFormSubmit}>
                 <label>Title:</label>
+                <div className="input-container">
                 <input
+                  className="input" 
                   type="text"
                   name="title"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
-        
+                </div>
+                <div className="input-container">
                 <label>Type of activity:</label>
-                <select required type="text" name="type"
+                <select id="btn" required type="text" name="type"
                 value={type}
+                className="input" 
                 onChange={(e) => setType(e.target.value)}>
                     <option value="">Choose type of activity</option>
                     <option value="Quick walk">Quick walk</option>
@@ -92,10 +100,12 @@ console.log(requestBody);
                     <option value="Running">Running</option>
                     <option value="Teaching tricks">Teaching tricks</option>
                 </select>
-
+                </div>
+                <div className="input-container">
                 <label>Province:</label>
-                <select required type="text" name="city"
+                <select id="btn" required type="text" name="city"
                 value={city}
+                className="input" 
                 onChange={(e) => setCity(e.target.value)}>
                     <option value="">Choose province</option>
                     <option value="Álava/Araba">Álava/Araba</option>
@@ -151,11 +161,16 @@ console.log(requestBody);
                     <option value="Zamora">Zamora</option>
                     <option value="Zaragoza">Zaragoza</option>
                 </select>
-        
-                <button type="submit">Update Activity</button>
+                </div>
+                <div className="buttons">
+                <button id="btn2" type="submit">Update Activity</button>
+                <button id="btn2" onClick={deleteActivity}>Delete Activity</button>
+                </div>
+              
               </form>
         
-              <button onClick={deleteActivity}>Delete Activity</button>
+              
+            </div>
             </div>
           );
         }

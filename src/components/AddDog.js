@@ -5,6 +5,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
+import Navbar from "./Navbar";
 
 const API_URL = "http://localhost:5005";
 
@@ -67,68 +68,88 @@ const { user } = useContext(AuthContext);
   };
 
   return (
-    <div className="AddDog">
+    <div>
+      <Navbar />
+    
+    <div className="Add">
+    
+      <form className="form" onSubmit={handleSubmit} onChange={(e) => onFormChange(e)}>
       <h3>Add Dog</h3>
-
-      <form onSubmit={handleSubmit} onChange={(e) => onFormChange(e)}>
+      <div className="input-container">
         <label>Name:</label>
         <input
           type="text"
           name="name"
           value={name}
+          className="input" 
           onChange={(e) => setName(e.target.value)}
         />
+        </div>
+        <div className="input-container">
         <label>Size:</label>
-        <select required type="text" name="dogSize"
+        <select id="btn" required type="text" name="dogSize"
           value={size}
+          className="input" 
           onChange={(e) => setSize(e.target.value)}>
           <option value="">Choose size</option>
-          <option value="Toy">Toy dog (5-12 pounds)</option>
-          <option value="Small">Small dog (12-24 pounds)</option>
-          <option value="Medium">Medium dog (24-59 pounds)</option>
-          <option value="Large">Large dog (59-99 pounds)</option>
-          <option value="Giant">Giant dog (over 100 pounds)</option>
+          <option value="Toy">Toy dog (5-12 lbs)</option>
+          <option value="Small">Small dog (12-24 lbs)</option>
+          <option value="Medium">Medium dog (24-59 lbs)</option>
+          <option value="Large">Large dog (59-99 lbs)</option>
+          <option value="Giant">Giant dog (> 100 lbs)</option>
         </select>
-
+        </div>
+        <div className="input-container">
         <label>Is Friendly?</label>
-        <select required type="text" name="dogFriendly"
+        <select id="btn" required type="text" name="dogFriendly"
           value={dogFriendly}
+          className="input" 
           onChange={(e) => setDogFriendly(e.target.value)}>
           <option value="">Is dog friendly?</option>
           <option value="Y">Yes</option>
           <option value="N">No</option>
         </select>
-
-        <select required type="text" name="catFriendly"
+        </div>
+        <div className="input-container">
+        <select id="btn" required type="text" name="catFriendly"
           value={catFriendly}
+          className="input" 
           onChange={(e) => setCatFriendly(e.target.value)}>
           <option value="">Is cat friendly?</option>
           <option value="Y">Yes</option>
           <option value="N">No</option>
         </select>
-
-        <select required type="text" name="dogFriendly"
+        </div>
+        <div className="input-container">
+        <select id="btn" required type="text" name="dogFriendly"
           value={childFriendly}
+          className="input" 
           onChange={(e) => setChildFriendly(e.target.value)}>
           <option value="">Is children friendly?</option>
           <option value="Y">Yes</option>
           <option value="N">No</option>
         </select>
-
-
+        </div>
+        <div className="input-container">
         <label>Energy:</label>
-        <select required type="text" name="dogEnergy"
+        <select id="btn" required type="text" name="dogEnergy"
           value={energy}
+          className="input" 
           onChange={(e) => setEnergy(e.target.value)}>
-            <option value="">Choose dog's energy</option>
+            <option value="">Dog's energy</option>
           <option value="Lazy">Lazy</option>
           <option value="Energetic">Energetic</option>
         </select>
         <label>Image:</label>
-        <input type="file" name="image" id="file" accept=".jpeg, .png, .jpg" />
-
-        <button type="submit">Submit</button>
+        <input 
+        type="file" 
+        name="image" 
+        id="file" 
+        accept=".jpeg, .png, .jpg" />
+        </div>
+        <button id="btn2" type="submit">Submit</button>
       </form>
+    </div>
     </div>
   );
 }
