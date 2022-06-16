@@ -179,8 +179,13 @@ label {
   font-size: 16px;
   width: 243px;
   height: 25px;
+  font-family: Raleway;
 }
-
+.dateForm{
+  height: auto;
+  flex-direction: row;
+  
+}
 .input-container-login {
   display: flex;
   flex-direction: column;
@@ -354,4 +359,9 @@ div.brackets .links:hover:after {
 }
 .leftDog{
   width:300px
+}
+
+.buttons{
+  display:flex;
+  flex-direction: column;
 }

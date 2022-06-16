@@ -35,7 +35,7 @@ function ChosenActivityCard(props) {
             headers: { Authorization: `Bearer ${storedToken}` },
         })
         .then((response) => {
-        navigate("/myactivities");
+        navigate("/");
         });
     };
 
@@ -52,8 +52,8 @@ function ChosenActivityCard(props) {
                 <p><b>Location:</b> {props.city}</p>
                 <p><b>Date:</b> {props.activityDate}</p>
                 <p><b>Activity choosen</b></p>
-                <StartRating />
-                <button onClick={handleOnClick} id="btn2">Cancel activity</button>
+                {/*<StartRating />*/}
+                <button onClick={handleOnClick} key ={props.id} {...props} id="btn2">Cancel activity</button>
             </div>
     );
 }
