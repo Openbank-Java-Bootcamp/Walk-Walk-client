@@ -44,7 +44,7 @@ function LoginPage(props) {
   return (
     <div className="Welcome">
       <form className="form" onSubmit={handleLoginSubmit}>
-        <div className="input-container">
+        <div className="input-container-login">
         <img className="logobig" src={logosmall} alt="logosmall" />
           <label>Email:</label>
           <input 
@@ -65,7 +65,7 @@ function LoginPage(props) {
             onChange={handlePassword}
           />
         </div>
-          <button type="submit" id="btn">
+          <button type="submit" id="btn0">
             Login
           </button>
 

@@ -40,7 +40,7 @@ function SignupPage(props) {
   return (
     <div className="Welcome">
       <form className="form" onSubmit={handleSignupSubmit}>
-      <div className="input-container">
+      <div className="input-container-login">
 
      
 
@@ -86,7 +86,7 @@ function SignupPage(props) {
         />
       </div>
 
-        <button type="submit" id="btn">
+        <button type="submit" id="btn0">
           Sign Up
           </button>
 
