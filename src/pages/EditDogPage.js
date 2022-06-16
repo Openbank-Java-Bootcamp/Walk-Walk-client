@@ -96,13 +96,13 @@ function EditDogPage(props) {
         <div>
             <Navbar />
         
-        <div className="Edit">
+        <div className="Add">
             <h3>Edit the Dog</h3>
             <form className="form" onSubmit={handleFormSubmit} onChange={(e) => onFormChange(e)}>
-            <div className="input-container">
+            <div className="input-container-text">
             <label>Name:</label>
             <input
-                className="input" 
+                className="input-text" 
                 type="text"
                 name="name"
                 value={name}
@@ -168,11 +168,12 @@ function EditDogPage(props) {
             <div className="input-container">
             <label>Image:</label>
             <input className="input"  type="file" name="image" id="file" accept=".jpeg, .png, .jpg" />
+            </div>
                 <div className="buttons">
                 <button id="btn2" type="submit">Update Dog</button>
                 <button id="btn2" onClick={deleteDog}>Delete Dog</button>
                 </div>
-            </div>
+            
             </form>
             
         </div>

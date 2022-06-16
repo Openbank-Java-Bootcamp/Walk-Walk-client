@@ -21,8 +21,9 @@ function ActivityCard(props) {
     const [ activityDate, setActivityDate] = useState(props.activityDate)
     
     const navigate = useNavigate();
-
+    console.log(props.activityDate)
     const handleClick = (e) => {
+        
         e.preventDefault();
         const storedToken = localStorage.getItem("authToken");
         

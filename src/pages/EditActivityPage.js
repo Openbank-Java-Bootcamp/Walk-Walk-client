@@ -16,7 +16,7 @@ function EditActivityPage(props) {
   const [type, setType] = useState("");
   const [city, setCity] = useState("");
   const [creatorId, setCreatorId ] = useState("");
-
+  const [activityDate, setActivityDate] = useState("")
 
   const {activityId} = useParams();
 
@@ -37,6 +37,7 @@ function EditActivityPage(props) {
       setType(oneActivity.type);
       setCity(oneActivity.city);
       setCreatorId(user.id);
+      setActivityDate(oneActivity.activityDate);
         
 })
 .catch((error) => console.log(error));
@@ -48,8 +49,7 @@ function EditActivityPage(props) {
     e.preventDefault();
     const storedToken = localStorage.getItem("authToken");
     
-    const requestBody = { title, type, city, creatorId };
-console.log(requestBody);
+    const requestBody = {title, type, city, creatorId, activityDate};
       axios
       .put(`${API_URL}/api/activities/${activityId}`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -73,15 +73,14 @@ console.log(requestBody);
         return (
           <div>
             <Navbar />
+            <div className="Add">
             <h3>Edit the Activity</h3>
-          
-            <div className="Edit">
-
               <form className="form" onSubmit={handleFormSubmit}>
+                
+                <div className="input-container-text">
                 <label>Title:</label>
-                <div className="input-container">
                 <input
-                  className="input" 
+                  className="input-text" 
                   type="text"
                   name="title"
                   value={title}
@@ -161,6 +160,16 @@ console.log(requestBody);
                     <option value="Zamora">Zamora</option>
                     <option value="Zaragoza">Zaragoza</option>
                 </select>
+                </div>
+                <div className="input-container">
+                <label><b>Date:</b></label>
+                <input
+                  type="datetime-local"
+                  name="activityDate"
+                  className="input-text dateForm" 
+                  value={activityDate}
+                  onChange={(e) => setActivityDate(e.target.value)}
+                />
                 </div>
                 <div className="buttons">
                 <button id="btn2" type="submit">Update Activity</button>

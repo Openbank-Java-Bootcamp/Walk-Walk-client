@@ -40,7 +40,7 @@ function ActivitiesListPage() {
                 <h1>Activities</h1>
                 {activities.map((activity) => (
                     
-                    (activity.chosen ? (activity.creator.id != user.id ? <ActivityCard key ={activity.id} {...activity} /> : <MyActivityCard key ={activity.id} {...activity} /> ) : null)
+                    (!activity.chosen ? (activity.creator.id != user.id ? <ActivityCard key ={activity.id} {...activity} /> : <MyActivityCard key ={activity.id} {...activity} /> ) : null)
                     
                 ))}
                 

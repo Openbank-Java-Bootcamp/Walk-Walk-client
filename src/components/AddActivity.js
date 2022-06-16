@@ -164,7 +164,7 @@ const { user } = useContext(AuthContext);
         <input
           type="datetime-local"
           name="activityDate"
-          className="input-text" 
+          className="input-text dateForm" 
           value={activityDate}
           onChange={(e) => setActivityDate(e.target.value)}
         />
