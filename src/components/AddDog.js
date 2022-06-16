@@ -75,18 +75,18 @@ const { user } = useContext(AuthContext);
     
       <form className="form" onSubmit={handleSubmit} onChange={(e) => onFormChange(e)}>
       <h3>Add Dog</h3>
-      <div className="input-container">
-        <label>Name:</label>
+      <div className="input-container-text">
+        <label><b>Name:</b></label>
         <input
           type="text"
           name="name"
           value={name}
-          className="input" 
+          className="input-text" 
           onChange={(e) => setName(e.target.value)}
         />
         </div>
         <div className="input-container">
-        <label>Size:</label>
+        <label><b>Size:</b></label>
         <select id="btn" required type="text" name="dogSize"
           value={size}
           className="input" 
@@ -100,7 +100,7 @@ const { user } = useContext(AuthContext);
         </select>
         </div>
         <div className="input-container">
-        <label>Is Friendly?</label>
+        <label><b>Is Friendly?</b></label>
         <select id="btn" required type="text" name="dogFriendly"
           value={dogFriendly}
           className="input" 
@@ -131,7 +131,7 @@ const { user } = useContext(AuthContext);
         </select>
         </div>
         <div className="input-container">
-        <label>Energy:</label>
+        <label><b>Energy:</b></label>
         <select id="btn" required type="text" name="dogEnergy"
           value={energy}
           className="input" 

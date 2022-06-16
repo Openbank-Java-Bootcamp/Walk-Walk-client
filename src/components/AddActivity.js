@@ -16,13 +16,14 @@ const { user } = useContext(AuthContext);
   const [city, setCity] = useState("");
   const [creatorId, setCreatorId] = useState(user.id);
   const [assignedId, setAssignedId] = useState(null)
+  const [activityDate, setActivityDate] = useState("")
   const [dogsId , setDogs] = useState([]);
 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = {title, type, city, creatorId, assignedId, dogsId};
+    const requestBody = {title, type, city, creatorId, assignedId, activityDate, dogsId};
     console.log(requestBody);
     console.log(user);
     
@@ -38,6 +39,7 @@ const { user } = useContext(AuthContext);
         setTitle("");
         setType("");
         setCity("");
+        setActivityDate("");
         navigate("/myactivities");
       })
       .catch((error) => console.log(error));
@@ -73,23 +75,23 @@ const { user } = useContext(AuthContext);
       <div className="Add">
       <form className="form" onSubmit={(dogsId.length > 0 ? handleSubmit : console.log("You need to have a dog to create an activity."))}>
       <h3>Add Activity</h3>
-      <div className="input-container">
-        <label>Title:</label>
+      <div className="input-container-text">
+        <label><b>Title:</b></label>
         <input
           type="text"
           name="title"
-          className="input" 
+          className="input-text" 
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         </div>
         <div className="input-container">
-        <label>Type of activity:</label>
+        <label><b>Type of activity:</b></label>
         <select  id="btn" required type="text" name="type"
           value={type}
           className="input" 
           onChange={(e) => setType(e.target.value)}>
-            <option value="">Choose type of activity</option>
+            <option value="">type of activity</option>
             <option value="Quick walk">Quick walk</option>
             <option value="Long walk">Long walk</option>
             <option value="Running">Running</option>
@@ -97,7 +99,7 @@ const { user } = useContext(AuthContext);
         </select>
         </div>
         <div className="input-container">
-        <label>Province:</label>
+        <label><b>Province:</b></label>
         <select  id="btn" required type="text" name="city"
         value={city}
         className="input" 
@@ -156,6 +158,16 @@ const { user } = useContext(AuthContext);
             <option value="Zamora">Zamora</option>
             <option value="Zaragoza">Zaragoza</option>
         </select>
+        </div>
+        <div className="input-container">
+        <label><b>Date:</b></label>
+        <input
+          type="datetime-local"
+          name="activityDate"
+          className="input-text" 
+          value={activityDate}
+          onChange={(e) => setActivityDate(e.target.value)}
+        />
         </div>
         <div className="input-container">
         <button id="btn2" type="submit">Submit</button>

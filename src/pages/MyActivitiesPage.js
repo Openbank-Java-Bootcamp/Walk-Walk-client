@@ -9,18 +9,23 @@ import { Link } from "react-router-dom";
 import ActivityCard from "../components/ActivityCard";
 import MyActivityCard from "../components/MyActivityCard";
 import { useNavigate, useParams } from "react-router-dom";
-import StartRating from "../components/StarRating";
+
 import Navbar from '../components/Navbar';
+import { Navigate } from "react-router-dom";
+import ChosenActivityCard from "../components/ChosenActivityCard";
 
 
 const API_URL = "http://localhost:5005";
 
-function MyActivitiesPage() {
+function MyActivitiesPage(props) {
     const [ createdActivities, setCreatedActivities ] = useState([]);
     const [ chosenActivities, setChosenActivities ] = useState([]);
+    
     const { user } = useContext(AuthContext);
+    
+    const navigate = useNavigate();
 
-
+    
 
     useEffect(() => {
         const storedToken = localStorage.getItem("authToken");
@@ -39,6 +44,8 @@ function MyActivitiesPage() {
         })).catch(errors => {
           console.log(errors)
         })}, []);
+
+
     return (
         <div>
           <Navbar />
@@ -46,24 +53,14 @@ function MyActivitiesPage() {
                 <div className="ActivitiesCreated">
                     <h1>Activities created:</h1>
                     {createdActivities.map((activity) => (
-                        <MyActivityCard key ={activity.id} user={user} {...activity} />
+                        <MyActivityCard key ={activity.id} user={user} {...activity}  />
                     ))}
                     <Link to={"/activities/add"}><button id="btn">Add new activity</button></Link>
                 </div>
                 <div className="ActivitiesCreated">
                     <h1>Activities chosen:</h1>
-                    {chosenActivities.map((activity) => (
-                        <div className="ActivityCard card"
-                        style={{
-                            backgroundColor: 'pink',
-                          }}>
-                            <h3>{activity.title}</h3>
-                            <p style={{ maxWidth: "400px" }}>{activity.type}</p>
-                            <p style={{ maxWidth: "400px" }}>Activity created by: {activity.creator.username}</p>
-                            <p>Movil phone: {activity.creator.number}</p>
-                            <p>Activity choosen</p>
-                            <StartRating />
-                        </div>
+                    {chosenActivities.map((activity) => ( 
+                       <ChosenActivityCard key ={activity.id} user={user} {...activity}  />
                     ))}
                 </div>
             </div>
