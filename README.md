@@ -1,70 +1,62 @@
-# Getting Started with Create React App
+1.    PROJECT DESCRIPTION
+=========================
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+_Walk_ _Walk_! is an application designed to facilitate the interaction between dog owners and people who do not have dogs but have the time and desire to spend time with them.
 
-## Available Scripts
+One of the aims of the project was to make the interaction very intuitive in order to be usable for most of ranges of age. The dog owner only has to create an activity for its dog such as walking or running in a specific location and date. Then, another person can choose it if it is interesting for him/her and he/she accepts the date and time of the activity. Finally, they have the contact number of the other user in order to define the exact location and to have a conversation before the activity.
 
-In the project directory, you can run:
+2.    TECHNOLOGIES USED
+=======================
 
-### `npm start`
+The technologies used in this project for the frontend are: React, HTML, JS and CSS.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3.    COMPONENTS AND PAGES STRUCTURE
+====================================
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+\-          HomePage: In case you are not logged in, this page will show the LoginPage. In case you are already logged in, this page will show a Navbar and ActivityListPage.
 
-### `npm test`
+\-          LoginPage: This page is designed so that users who have already registered in the app can enter it by entering their email and password.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In case they are not registered yet, they will find in this page the option to go to the SignupPage to register in the database by entering: username, email, password and phone number.
 
-### `npm run build`
+\-          Navbar: is an important component through which you can go to MyDogsPage, MyActivitiesPage, ActivitiesListPage and the button to LogOut.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+\-          MyDogsPage: Here I can see my list of dogs, add one through a button that takes me to the AddDog component, edit their data or delete them by accessing through the EditDogPage.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+\-          MyActivitiesPage: In this page I can see two lists, one with the activities created by me and another one with the activities I have chosen. In this page I have the Add Activity button that takes me to the AddActivity component.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+\-          AddActivity: I can only add an activity if I have a dog. When I fill in the form and press submit, I have the Edit Activity option. That takes me to the EditActivity where I can edit the activity data or delete it by pressing Update or Delete.
 
-### `npm run eject`
+\-          In addition to the previous pages, the app has also the additional components ActivityCard, ChosenActivityCard, MyActivityCard, IsPrivate and IsAnon which are used to show certain information in the pages.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+\-          Auth.Context: Enables the authentication of each user.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+4.    FUTURE WORK
+=================
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+As future work the app could be further developed by creating a chat for greater interaction between owners and volunteers to walk dogs.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Another thing to implement would be a rating to evaluate the activities.
 
-## Learn More
+Finally, it would also be interesting if users could visit the profiles of other users. Showing the dogs that the user have, and all the information related with activities.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5.    RESOURCES
+===============
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Some of the resources used to improve the application have been:
 
-### Code Splitting
+\-          Pexels: to find photos and backgrounds ([https://www.pexels.com/es-es/](https://www.pexels.com/es-es/)).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+\-          Canva: free web site to design logos ([https://www.canva.com/](https://www.canva.com/)).
 
-### Analyzing the Bundle Size
+\-          CodeSandBox: where to find design ideas ([https://codesandbox.io/](https://codesandbox.io/)).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+\-          Trello: [https://trello.com/b/VWVadwtS/walk-walk-final-project](https://trello.com/b/VWVadwtS/walk-walk-final-project)
 
-### Making a Progressive Web App
+\-          The material provided in the classes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+\-          Other pages to find information:
 
-### Advanced Configuration
+o   [https://stackoverflow.com/](https://stackoverflow.com/)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+o   [https://www.w3schools.com/](https://www.w3schools.com/)
